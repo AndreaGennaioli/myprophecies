@@ -1,3 +1,102 @@
-.container{
+body {
+    min-width: 500px;
+}
+
+.container {
     padding-top: 95px;
+}
+
+.f {
+    width: 100%;
+}
+
+.form {
+    width: 50%;
+    position: relative;
+    height: 50px;
+    overflow-x: hidden;
+}
+
+
+.form input {
+    width: 100%;
+    height: 100%;
+    color: #595f6e;
+    border: none;
+    outline: none;
+}
+
+.w75 {
+    width: 75%;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.form label {
+    position: absolute;
+    bottom: 0px;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid black;
+}
+
+.form label::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    bottom: -1px;
+    height: 100%;
+    width: 100%;
+    border-bottom: 3px solid #5fa8d3;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.content-name {
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    transition: all 0.3s ease;
+}
+
+.form input:focus+.label-name .content-name,
+.form input:valid+.label-name .content-name {
+    transform: translateY(-150%);
+    font-size: 11px;
+    color: #5fa8d3;
+}
+
+.form input:focus+.label-name::after,
+.form input:valid+.label-name::after {
+    transform: translateX(0%);
+}
+
+.prophecy {
+    clear: both;
+    padding: 20px;
+    background: #eee;
+    float: left;
+    display: inline-block;
+    margin-left: 8px;
+    margin-bottom: 2px;
+}
+
+.header {
+    display: flex;
+    margin-bottom: 5px
+}
+
+.header h4 {
+    font-weight: 600;
+    margin-right: 10px
+}
+
+.header span {
+    color: #999;
+    padding-top: 1%;
+
 }

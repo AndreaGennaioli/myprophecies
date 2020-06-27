@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/jquery.datetimepicker.min.css">
     <title>Document</title>
 </head>
 
@@ -19,29 +20,46 @@
     <div class="container">
         <h1>Write Your Prophecy</h1>
         <hr>
-        <div class="container">
-            <form>
-                <div class="form-group row">
-                    <label for="inputName" class="col-sm-1-12 col-form-label"></label>
-                    <div class="col-sm-1-12">
-                        <input type="text" class="form-control" name="inputName" id="inputName" placeholder="">
+        <div class='f'>
+            <div class="row">
+                <div class="col-md6 col-sm-6">
+                    <div class="form w75">
+                        <input id="username" type="text" name="name" autocomplete="off" required />
+                        <label for="name" class="label-name">
+                            <span class="content-name">Name of the Prophet</span>
+                        </label>
                     </div>
                 </div>
-                <fieldset class="form-group row">
-                    <legend class="col-form-legend col-sm-1-12">Group name</legend>
-                    <div class="col-sm-1-12">
-                        
-                    </div>
-                </fieldset>
-                <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">Action</button>
+                <div class="col-md6 col-sm-6">
+                    <div class="form">
+                        <input id="picker" type="text" class="form-control" autocomplete="off" required>
+                        <label for="name" class="label-name">
+                            <span class="content-name">Date of the Prophecy</span>
+                        </label>
                     </div>
                 </div>
-            </form>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form w100">
+                        <input id="prophecy" type="text" name="name" autocomplete="off" required />
+                        <label for="name" class="label-name">
+                            <span class="content-name">Your Prophecy</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button id="btn-send" type="button" class="btn btn-primary w100" style="margin-top: 10px;">Send</button>
         </div>
-    </div>
+        <!-- Others Prophecies -->
+        <hr><br><br>
+        <h1>Others Prophecies</h1>
+        <br>
+        <ul class="list-group" id="prophecies-list">
     
+        </ul>
+    </div>
+
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -52,6 +70,37 @@
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+    <script src="./libs/jquery.datetimepicker.full.min.js"></script>
+
+    <!-- Utils JS -->
+    <script src="./js/utils/prophecy.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script type="text/javascript" src="./libs/moment.js"></script>
+    <script type="text/javascript" src="./libs/mustache.js"></script>
+
+    <!-- Scripts JS -->
+    <script src="./js/index.js"></script>
+
+    <script>
+        // script per il data picker
+        $('#picker').datetimepicker({
+            timepicker: false,
+            datapicker: true,
+            format: 'm-d-Y',
+            yearStart: 2020,
+            yearEnd: 2099
+        });
+    </script>
+    <!-- Themeplates -->
+    <script id="new-prophecy" type="text/template">
+        <div class="header">
+            <h4>{{name}}</h4>
+            <span>{{date}}</span>
+          </div>
+          <div class="text">
+            <p>{{prophecy}}</p>
+          </div>
     </script>
 </body>
 
