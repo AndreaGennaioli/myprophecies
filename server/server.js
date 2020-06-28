@@ -30,14 +30,14 @@ io.on('connection', (socket) => {
     socket.on('emitNew', (obj) => {
         let prophecies = JSON.parse(fs.readFileSync('./server/cache/prophecies.json', 'utf-8'));
 
-        prophecies.prophecies.push(obj)
+        prophecies.prophecies.push(obj);
 
         fs.writeFileSync('./server/cache/prophecies.json', JSON.stringify(prophecies), (err) => {
             if (err) console.log(err);
         });
         
         prophecies = JSON.parse(fs.readFileSync('./server/cache/prophecies.json', 'utf-8'));
-        socket.emit('updateList', prophecies);
+        io.emit('updateList', prophecies);
     })
 });
 

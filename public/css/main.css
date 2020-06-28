@@ -78,11 +78,11 @@ body {
 .prophecy {
     clear: both;
     padding: 20px;
-    background: #eee;
-    float: left;
+    background: rgb(255, 255, 255);
     display: inline-block;
     margin-left: 8px;
     margin-bottom: 2px;
+    border: 1px solid rgba(0,0,0,.125);;
 }
 
 .header {
@@ -97,6 +97,7 @@ body {
 
 .header span {
     color: #999;
-    padding-top: 1%;
-
+    padding-top: 0.5%;
+    position: absolute;
+    right: 10px;
 }
