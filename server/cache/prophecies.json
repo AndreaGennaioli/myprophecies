@@ -1,5 +1,9 @@
 {
     "prophecies": [{
+        "name": "ciao",
+        "date": "06-30-2020",
+        "prophecy": "prova prova"
+    }, {
         "name": "andrea",
         "date": "10-09-2020",
         "prophecy": "prova prova prova profezia"
