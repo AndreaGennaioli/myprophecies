@@ -1,0 +1,3 @@
+node_modules/
+./server/cache/views
+./server/cache/prophecies
