@@ -6,6 +6,10 @@ $('#btn-send').click(function () {
     var time = $('#picker').val();
     var prophecy = $('#prophecy').val();
 
+    if ((name || time || prophecy) == '') {
+        return alert('Please enter all required fields')
+    }
+
     var obj_prophecy = new Prophecy(name, time, prophecy);
     console.log(obj_prophecy);
 
@@ -20,6 +24,9 @@ socket.on('updateList', (list) => {
     console.log(list);
     $('#prophecies-list').html('');
     list.prophecies.forEach((p) => {
+        if ((name || time || prophecy) == '') {
+            return;
+        }
         console.log(p.name);
         const template = $('#new-prophecy').html();
         const html = Mustache.render(template, p);
