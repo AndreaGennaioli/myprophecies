@@ -114,3 +114,10 @@ body {
     position: absolute;
     right: 10px;
 }
+
+.footer span {
+    color: #999;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}

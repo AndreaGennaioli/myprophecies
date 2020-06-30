@@ -33,6 +33,7 @@ socket.on('updateList', (list) => {
             name: ' ' + p.name,
             date: ' ' + p.date,
             prophecy: ' ' + p.prophecy,
+            likes: p.likes
         });
 
         console.log(html);

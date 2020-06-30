@@ -3,5 +3,6 @@ class Prophecy{
         this.name = name;
         this.date = date;
         this.prophecy = prophecy;
+        this.likes = 0;
     }
 }

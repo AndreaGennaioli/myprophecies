@@ -40,7 +40,16 @@ io.on('connection', (socket) => {
         
         prophecies = JSON.parse(fs.readFileSync('./server/cache/prophecies.json', 'utf-8'));
         io.emit('updateList', prophecies);
-    })
+    });
+
+    socket.on('like', (obj) => {
+        let prophecies = JSON.parse(fs.readFileSync('/server/cache/prophecies.json', 'utf-8'));
+        prophecies.prophecies.forEach((p) => {
+            if (p.name == obj.name && p.date == obj.date) {
+                p.likes += 1;
+            }
+        })
+    });
 });
 
 server.listen(port, () => {
