@@ -24,17 +24,21 @@ socket.on('updateList', (list) => {
     console.log(list);
     $('#prophecies-list').html('');
     list.prophecies.forEach((p) => {
-        if ((p.name || p.time || p.prophecy) == '') {
+        if ((p.name || p.date || p.prophecy) == '') {
             return;
         }
         console.log(p.name);
         const template = $('#new-prophecy').html();
-        const html = Mustache.render(template, p);
+        const html = Mustache.render(template, {
+            name: ' ' + p.name,
+            date: ' ' + p.date,
+            prophecy: ' ' + p.prophecy,
+        });
 
         console.log(html);
 
         const div = document.createElement('li');
-        div.setAttribute('class', 'list-group-item prophecy');
+        div.setAttribute('class', 'prophecy');
         div.innerHTML = html;
 
         $('#prophecies-list').append(div);
