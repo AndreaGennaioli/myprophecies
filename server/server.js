@@ -10,6 +10,8 @@ let app = express();
 let server = http.createServer(app);
 let io = socketIO(server);
 
+// TODO: sostituire tutti i / con i \\ nei fs
+
 app.use(express.static(__dirname + "/../public"));
 
 io.on('connection', (socket) => {
@@ -23,7 +25,7 @@ io.on('connection', (socket) => {
 
     views.views = views.views + 1;
 
-    fs.writeFileSync('.\\server/cache/views.json', JSON.stringify(views), (err) => {
+    fs.writeFileSync('./server/cache/views.json', JSON.stringify(views), (err) => {
         if (err) console.log(err);
     });
 
