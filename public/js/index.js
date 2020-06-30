@@ -24,7 +24,7 @@ socket.on('updateList', (list) => {
     console.log(list);
     $('#prophecies-list').html('');
     list.prophecies.forEach((p) => {
-        if ((name || time || prophecy) == '') {
+        if ((p.name || p.time || p.prophecy) == '') {
             return;
         }
         console.log(p.name);

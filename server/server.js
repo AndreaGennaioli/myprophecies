@@ -23,16 +23,16 @@ io.on('connection', (socket) => {
 
     views.views = views.views + 1;
 
-    fs.writeFileSync('./server/cache/views.json', JSON.stringify(views), (err) => {
+    fs.writeFileSync('.\\server/cache/views.json', JSON.stringify(views), (err) => {
         if (err) console.log(err);
     });
 
     socket.on('emitNew', (obj) => {
-        let prophecies = JSON.parse(fs.readFileSync('./server/cache/prophecies.json', 'utf-8'));
+        let prophecies = JSON.parse(fs.readFileSync('/server/cache/prophecies.json', 'utf-8'));
 
         prophecies.prophecies.unshift(obj);
 
-        fs.writeFileSync('./server/cache/prophecies.json', JSON.stringify(prophecies), (err) => {
+        fs.writeFileSync('/server/cache/prophecies.json', JSON.stringify(prophecies), (err) => {
             if (err) console.log(err);
         });
         
