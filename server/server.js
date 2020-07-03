@@ -30,11 +30,11 @@ io.on('connection', (socket) => {
     });
 
     socket.on('emitNew', (obj) => {
-        let prophecies = JSON.parse(fs.readFileSync('/server/cache/prophecies.json', 'utf-8'));
+        let prophecies = JSON.parse(fs.readFileSync('./server/cache/prophecies.json', 'utf-8'));
 
         prophecies.prophecies.unshift(obj);
 
-        fs.writeFileSync('/server/cache/prophecies.json', JSON.stringify(prophecies), (err) => {
+        fs.writeFileSync('./server/cache/prophecies.json', JSON.stringify(prophecies), (err) => {
             if (err) console.log(err);
         });
         
@@ -42,13 +42,30 @@ io.on('connection', (socket) => {
         io.emit('updateList', prophecies);
     });
 
-    socket.on('like', (obj) => {
-        let prophecies = JSON.parse(fs.readFileSync('/server/cache/prophecies.json', 'utf-8'));
+    socket.on('like', (id) => {
+        let prophecies = JSON.parse(fs.readFileSync('./server/cache/prophecies.json', 'utf-8'));
         prophecies.prophecies.forEach((p) => {
-            if (p.name == obj.name && p.date == obj.date) {
+            if (id == p.id) {
                 p.likes += 1;
             }
         })
+
+        fs.writeFileSync('./server/cache/prophecies.json', JSON.stringify(prophecies), (err) => {
+            if (err) console.log(err);
+        });
+    });
+
+    socket.on('unlike', (id) => {
+        let prophecies = JSON.parse(fs.readFileSync('./server/cache/prophecies.json', 'utf-8'));
+        prophecies.prophecies.forEach((p) => {
+            if (id == p.id) {
+                p.likes -= 1;
+            }
+        })
+
+        fs.writeFileSync('./server/cache/prophecies.json', JSON.stringify(prophecies), (err) => {
+            if (err) console.log(err);
+        });
     });
 });
 

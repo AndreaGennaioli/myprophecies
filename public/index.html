@@ -112,14 +112,14 @@
     <!-- Themeplates -->
     <script id="new-prophecy" type="text/template">
         <div class="header">
-            <h4>Prophet: {{name}}</h4>
+            <h4 id="title">Prophet: {{name}}</h4>
             <span>date: {{date}}</span>
         </div>
         <div class="text">
             <p>{{prophecy}}</p>
         </div>
         <div class="footer">
-        <span style="font-size: 20px;"><input type="image" id="myimage" src="./img/like.png" style="heigth: 25px; width: 25px; outline: none;">{{likes}}</span>
+        <span style="font-size: 20px;" id="b"><input type="image" id="{{id}}" src="./img/like.png" style="heigth: 25px; width: 25px; outline: none;">{{likes}}</span>
         </div>
     </script>
 </body>
