@@ -19,7 +19,7 @@ io.on('connection', (socket) => {
 
     let prophecies = JSON.parse(fs.readFileSync('./server/cache/prophecies.json', 'utf-8'));
 
-    socket.emit('updateList', prophecies);
+    socket.emit('updateList', {prophecies: prophecies, opts: 'standard'});
 
     var views = JSON.parse(fs.readFileSync('./server/cache/views.json', 'utf-8'));
 
@@ -39,7 +39,7 @@ io.on('connection', (socket) => {
         });
         
         prophecies = JSON.parse(fs.readFileSync('./server/cache/prophecies.json', 'utf-8'));
-        io.emit('updateList', prophecies);
+        io.emit('updateList', {prophecies: prophecies, opts: 'standard'});
     });
 
     socket.on('like', (id) => {
@@ -66,6 +66,12 @@ io.on('connection', (socket) => {
         fs.writeFileSync('./server/cache/prophecies.json', JSON.stringify(prophecies), (err) => {
             if (err) console.log(err);
         });
+    });
+
+    socket.on('req', (opts) => {
+        console.log(opts);
+        let prophecies = JSON.parse(fs.readFileSync('./server/cache/prophecies.json', 'utf-8'));
+        socket.emit('updateList', {prophecies: prophecies, opts: opts});
     });
 });
 

@@ -70,6 +70,10 @@
         <!-- Others Prophecies -->
         <hr><br><br>
         <h1>Others Prophecies</h1>
+        <select id="sortby" name="sortby" style="margin-top: 10px; margin-bottom: 10px; margin-left: 10px;">
+            <option value="standard" selected>most recent</option>
+            <option value="likes">most liked</option>
+        </select>
         <br>
         <ul class="list-group" id="prophecies-list">
 
@@ -119,7 +123,9 @@
             <p>{{prophecy}}</p>
         </div>
         <div class="footer">
-        <span style="font-size: 20px;" id="b"><input type="image" id="{{id}}" src="./img/like.png" style="heigth: 25px; width: 25px; outline: none;">{{likes}}</span>
+        <span style="font-size: 20px;" id="b">
+            <input type="image" id="{{id}}" src="./img/like.png" style="heigth: 25px; width: 25px; outline: none;">{{likes}}
+        </span>
         </div>
     </script>
 </body>
